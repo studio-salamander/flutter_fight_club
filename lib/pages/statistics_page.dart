@@ -42,8 +42,8 @@ class _StatisticsPageContent extends StatelessWidget {
               future: SharedPreferences.getInstance().then(
                 (sharedPreferences) => {
                   "statsWon": sharedPreferences.getInt("stats_won") ?? 0,
-                  "statsDraw": sharedPreferences.getInt("stats_lost") ?? 0,
-                  "statsLost": sharedPreferences.getInt("stats_draw") ?? 0
+                  "statsDraw": sharedPreferences.getInt("stats_draw") ?? 0,
+                  "statsLost": sharedPreferences.getInt("stats_lost") ?? 0
                 },
               ),
               builder: (context, snapshot) {
