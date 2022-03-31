@@ -15,7 +15,7 @@ class FightClubColors {
   static const bodyPartButtonBorder = Color.fromRGBO(197, 209, 234, 1);
 
   static const transparentFightResult = Color.fromRGBO(255, 255, 255, 0);
-  static const greenFightResult = Color.fromRGBO(3, 136, 0, 1);
-  static const redFightResult = Color.fromRGBO(234, 44, 44, 1);
+  static const green = Color.fromRGBO(3, 136, 0, 1);
+  static const red = Color.fromRGBO(234, 44, 44, 1);
 
 }

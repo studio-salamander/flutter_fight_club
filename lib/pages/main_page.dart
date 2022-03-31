@@ -49,9 +49,21 @@ class _MainPageContent extends StatelessWidget {
                 if (!snapshot.hasData || snapshot.data == null) {
                   return const SizedBox();
                 }
-                return FightResultWidget(
-                  fightResult: _getFightResultText(snapshot.data),
-                  // fightResult: Text(snapshot.data!),
+                final FightResult fightResult =
+                    FightResult.getByName(snapshot.data!);
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Last fight result",
+                      style: TextStyle(
+                        color: FightClubColors.darkGreyText,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    FightResultWidget(fightResult: fightResult),
+                  ],
                 );
               },
             ),
@@ -85,14 +97,14 @@ class _MainPageContent extends StatelessWidget {
     );
   }
 
-  FightResult _getFightResultText(snapshotData) {
-    if (snapshotData.toString().toLowerCase() == 'won') {
-      return FightResult.won;
-    } else if (snapshotData.toString().toLowerCase() == 'lost') {
-      return FightResult.lost;
-    } else if (snapshotData.toString().toLowerCase() == 'draw') {
-      return FightResult.draw;
-    }
-    return snapshotData;
-  }
+// FightResult _getFightResultText(snapshotData) {
+//   if (snapshotData.toString().toLowerCase() == 'won') {
+//     return FightResult.won;
+//   } else if (snapshotData.toString().toLowerCase() == 'lost') {
+//     return FightResult.lost;
+//   } else if (snapshotData.toString().toLowerCase() == 'draw') {
+//     return FightResult.draw;
+//   }
+//   return snapshotData;
+// }
 }

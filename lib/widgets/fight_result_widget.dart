@@ -7,8 +7,10 @@ import '../resources/fight_club_images.dart';
 class FightResultWidget extends StatelessWidget {
   final FightResult fightResult;
 
-  const FightResultWidget({Key? key, required this.fightResult})
-      : super(key: key);
+  const FightResultWidget({
+    Key? key,
+    required this.fightResult,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +38,18 @@ class FightResultWidget extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              const SizedBox(width: 8),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 12),
                   const Text(
                     "You",
-                    style: TextStyle(color: FightClubColors.darkGreyText),
+                    style: TextStyle(
+                      color: FightClubColors.darkGreyText,
+                      fontSize: 14,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Image.asset(
@@ -58,13 +64,12 @@ class FightResultWidget extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                 decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(22.0),
-                  color: _setFightResultColor(fightResult),
+                  borderRadius: BorderRadius.circular(22),
+                  color: fightResult.color,
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  _setFightResultText(fightResult),
+                  fightResult.result.toLowerCase(),
                   style: const TextStyle(
                     color: FightClubColors.white,
                     fontSize: 16,
@@ -72,12 +77,13 @@ class FightResultWidget extends StatelessWidget {
                 ),
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 12),
                   const Text(
                     "Enemy",
                     style: TextStyle(
                       color: FightClubColors.darkGreyText,
+                      fontSize: 14,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -88,32 +94,11 @@ class FightResultWidget extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(width: 8),
             ],
           ),
         ],
       ),
     );
-  }
-
-  String _setFightResultText(FightResult fightResult) {
-    if (fightResult == FightResult.won) {
-      return "won";
-    } else if (fightResult == FightResult.lost) {
-      return "lost";
-    } else if (fightResult == FightResult.draw) {
-      return "draw";
-    }
-    return "undefined";
-  }
-
-  Color _setFightResultColor(FightResult fightResult) {
-    if (fightResult == FightResult.won) {
-      return FightClubColors.greenFightResult;
-    } else if (fightResult == FightResult.lost) {
-      return FightClubColors.redFightResult;
-    } else if (fightResult == FightResult.draw) {
-      return FightClubColors.blueButton;
-    }
-    return FightClubColors.transparentFightResult;
   }
 }
